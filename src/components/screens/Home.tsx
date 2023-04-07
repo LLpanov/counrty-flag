@@ -4,8 +4,8 @@ import Layout from '@/components/layout/Layout'
 
 const Home: FC = () => {
 	return (
-		<Layout title='Home'>
-			<h3>lol</h3>
+		<Layout title='Home' description='The general page'>
+			<h3>HomePage</h3>
 		</Layout>
 	)
 }

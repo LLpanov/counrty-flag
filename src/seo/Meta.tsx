@@ -4,11 +4,7 @@ import Head from 'next/head'
 import { IMeta } from '@/seo/meta.interface'
 import { getTitle } from '@/util/util'
 
-const Meta: FC<PropsWithChildren<IMeta>> = ({
-	title,
-	description,
-	children
-}) => {
+const Meta: FC<PropsWithChildren<IMeta>> = ({ title, description, children }) => {
 	return (
 		<>
 			<Head>
