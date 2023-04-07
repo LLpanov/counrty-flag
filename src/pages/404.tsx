@@ -2,7 +2,7 @@ import { NextPage } from 'next'
 import Image from 'next/image'
 import { Text, Flex, Box } from '@chakra-ui/react'
 
-import Layout from '@/components/layout/Layout'
+import Layout from '@/components/Layout/Layout'
 
 const NotFound: NextPage = () => {
 	return (
