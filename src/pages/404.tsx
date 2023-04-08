@@ -9,7 +9,7 @@ const NotFound: NextPage = () => {
 		<Layout title='NotFound'>
 			<Flex minHeight='100vh' alignItems='center' justifyContent='center' flexDirection='row'>
 				<Box textAlign='center'>
-					<Image src={'/404.png'} alt='error' width={550} height={343} />
+					<Image src='/404.png' alt='error' width={550} height={343} />
 					<Text mt='20px' fontFamily='cursive' fontSize='xl'>
 						not found page...
 					</Text>
