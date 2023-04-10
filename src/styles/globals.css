@@ -2,9 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500&display=swap');
 
 * {
-    font-family: 'Poppins', 'sans-serif';
+    font-family: 'Poppins', 'Dancing Script', sans-serif;
 }
 
-h4.css-18j379d {
-    font-family: 'Dancing Script', sans-serif;
-}
