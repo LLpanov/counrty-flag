@@ -1,3 +1,6 @@
+import { jsx } from '@emotion/react'
+import IntrinsicAttributes = jsx.JSX.IntrinsicAttributes
+
 export interface ICountry {
 	independent: string
 	status: string
@@ -11,7 +14,7 @@ export interface ICountry {
 	maps: IMaps
 	car: ICar
 	languages: ILang
-	flags: string
+	flags: IFlags
 	coatOfArms: string
 	currencies: { [key: string]: ICurrency }
 }
@@ -26,6 +29,11 @@ interface IName {
 	official: string
 }
 
+interface IFlags {
+	png: string
+	alt: string
+}
+
 interface ILang {
 	[key: string]: string
 }
@@ -38,7 +46,12 @@ interface IMaps {
 	openStreetMaps: string
 }
 
-export interface DataCountries {
+export interface DataAllCountries {
+	countries: ICountry[]
+}
+
+export interface DataPaginateCountries extends IntrinsicAttributes {
+	data: ICountry[]
 	countries: ICountry[]
 }
 

@@ -5,7 +5,7 @@ const nextConfig = {
 		API_URL: process.env.API_URL
 	},
 	images: {
-		domains: ['localhost', 'static.thairath.co.th']
+		domains: ['localhost', 'flagcdn.com', 'upload.wikimedia.org']
 	}
 }
 

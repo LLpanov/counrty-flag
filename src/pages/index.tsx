@@ -1,22 +1,24 @@
-import { NextPage } from 'next'
+import { GetStaticProps, NextPage } from 'next'
 
 import Home from '@/components/Screens/Home'
-import { DataCountries } from '@/interfaces/country.interface'
+import { DataAllCountries } from '@/interfaces/country.interface'
 import { countryService } from '@/services/country.service'
+import { getPageOfCountries } from '@/util/util'
 
-const HomePage: NextPage<DataCountries> = ({ countries }) => {
-	return <Home countries={countries} />
+const HomePage: NextPage<DataAllCountries> = ({ countries }) => {
+	const data = getPageOfCountries(countries)
+	return <Home data={data} countries={countries} />
 }
 
 export default HomePage
 
-export const getStaticProps: () => Promise<{ revalidate: number; props: { countries: DataCountries } }> = async () => {
+export const getStaticProps: GetStaticProps = async () => {
 	const countries = await countryService.getAll()
 
 	return {
 		props: {
 			countries
 		},
-		revalidate: 60
+		revalidate: 3600
 	}
 }
