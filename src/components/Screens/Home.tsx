@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react'
-import { Divider, SimpleGrid } from '@chakra-ui/react'
+import { Box, Divider, Flex, SimpleGrid } from '@chakra-ui/react'
 
 import { DataPaginateCountries, ICountry } from '@/interfaces/country.interface'
 import Layout from '@/components/Layout/Layout'
@@ -23,7 +23,7 @@ const Home: FC<DataPaginateCountries> = ({ data, countries }) => {
 		<Layout title='Home' description='The general page all countries'>
 			{data.length ? (
 				<>
-					<Divider orientation='horizontal' my={10} />
+					<Divider orientation='horizontal' my={18} />
 					<SimpleGrid columns={[1, 2, 3, 4]} spacing={6} justifyItems={'center'} mt={'10'} mb={'5'} alignItems='center'>
 						{paginatedData.map((country: ICountry) => (
 							<FlagsCard key={country.name.common} country={country} />

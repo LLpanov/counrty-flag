@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import Image from 'next/image'
-import { Flex, Heading, IconButton, Select, useColorMode, useMediaQuery } from '@chakra-ui/react'
+import { Checkbox, Flex, Heading, Stack, IconButton, Select, useColorMode, useMediaQuery } from '@chakra-ui/react'
 import { MoonIcon, SunIcon } from '@chakra-ui/icons'
 
 import Finder from '@/components/Finder/Finder'
@@ -16,6 +16,11 @@ const Header: FC = () => {
 			<Heading as='h4' fontFamily='Dancing Script' size={isSmaller ? 'sm' : 'md'} display={isSmaller ? 'none' : 'block'}>
 				Get smth new about country...
 			</Heading>
+			<Stack spacing={3} direction='row'>
+				<Checkbox colorScheme='red' defaultChecked>
+					independence
+				</Checkbox>
+			</Stack>
 			<Finder />
 			<Select width='xs' size={'md'} placeholder='Select region' cursor='pointer' borderColor='whiteAlpha.300'>
 				<option value='option1'>Europe</option>
