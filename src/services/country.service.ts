@@ -18,6 +18,7 @@ export const countryService = {
 					capital: country.capital || null,
 					timezone: country.timezone || null,
 					region: country.region,
+					subregion: country.subregion || null,
 					landlocked: country.landlocked,
 					population: country.population,
 					startOfWeek: country.startOfWeek,
@@ -36,7 +37,10 @@ export const countryService = {
 					currencies: country.currencies || null
 				}))
 			),
-	getByName: (name: string): Promise<DataSingleCountry> => kyService.get(urls.name(name)).json(),
+	getByName: async (name: string): Promise<ICountry> => {
+		const response: ICountry[] = await kyService.get(urls.name(name)).json()
+		return response[0]
+	},
 	getByRegion: (region: string): Promise<DataAllCountries> => kyService.get(urls.region + `/${region}`).json(),
 	getByLang: (lang: string): Promise<DataAllCountries | DataSingleCountry> => kyService.get(urls.language + `/${lang}`).json(),
 	getByCurrency: (currency: string): Promise<DataAllCountries | DataSingleCountry> => kyService.get(urls.currency + `/${currency}`).json()

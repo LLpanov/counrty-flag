@@ -2,11 +2,11 @@ import { jsx } from '@emotion/react'
 import IntrinsicAttributes = jsx.JSX.IntrinsicAttributes
 
 export interface ICountry {
-	independent: string
+	independent: boolean
 	status: string
 	name: IName
 	capital: string[]
-	timezone: string[]
+	timezones?: string[]
 	region: string
 	landlocked: boolean
 	population: number
@@ -15,7 +15,8 @@ export interface ICountry {
 	car: ICar
 	languages: ILang
 	flags: IFlags
-	coatOfArms: string
+	coatOfArms: ICoatofArms
+	subregion: string
 	currencies: { [key: string]: ICurrency }
 }
 
@@ -44,6 +45,11 @@ interface ICar {
 
 interface IMaps {
 	openStreetMaps: string
+}
+
+interface ICoatofArms {
+	png: string
+	alt: string
 }
 
 export interface DataAllCountries {

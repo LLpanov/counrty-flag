@@ -9,9 +9,6 @@ const HomePage: NextPage<DataAllCountries> = ({ countries }) => {
 	const data = getPageOfCountries(countries)
 	return <Home data={data} countries={countries} />
 }
-
-export default HomePage
-
 export const getStaticProps: GetStaticProps = async () => {
 	const countries = await countryService.getAll()
 
@@ -22,3 +19,5 @@ export const getStaticProps: GetStaticProps = async () => {
 		revalidate: 3600
 	}
 }
+
+export default HomePage

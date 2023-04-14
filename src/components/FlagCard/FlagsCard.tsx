@@ -1,30 +1,28 @@
 import { FC } from 'react'
 import Image from 'next/image'
-import { Text, Box, Stack, useColorMode, Badge, Flex } from '@chakra-ui/react'
+import { Badge, Box, Flex, Stack, Text, useColorMode } from '@chakra-ui/react'
 
 import { DataSingleCountry } from '@/interfaces/country.interface'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 
-const FlagsCard: FC<DataSingleCountry> = ({ country: { name, languages, capital, currencies, region, flags } }) => {
+const FlagsCard: FC<DataSingleCountry> = ({
+	country: {
+		name: { common },
+		languages,
+		capital,
+		currencies,
+		region,
+		flags
+	}
+}) => {
 	const { colorMode } = useColorMode()
-	const router = useRouter()
 	return (
 		<Stack>
-			<Link
-				href={`country/${name}`}
-				onClick={e => {
-					e.preventDefault()
-					router.push({
-						pathname: `/country/${name}`,
-						query: { country: JSON.stringify(languages) }
-					})
-				}}
-			>
+			<Link href={`country/${common}`}>
 				<Box
 					cursor={'pointer'}
 					width={220}
-					height={310}
+					height={320}
 					overflow='hidden'
 					borderRadius='md'
 					boxShadow='md'
@@ -43,7 +41,7 @@ const FlagsCard: FC<DataSingleCountry> = ({ country: { name, languages, capital,
 					</Box>
 					<Stack padding={3} spacing={1}>
 						<Text fontSize='md' fontWeight='semibold'>
-							{name.common}
+							{common}
 						</Text>
 						<Text fontSize='xs' color='goldenrod'>
 							Capital: {capital}

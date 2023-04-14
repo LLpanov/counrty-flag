@@ -3,8 +3,16 @@ import Image from 'next/image'
 import { Text, Flex, Box } from '@chakra-ui/react'
 
 import Layout from '@/components/Layout/Layout'
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 
 const NotFound: NextPage = () => {
+	const router = useRouter()
+	useEffect(() => {
+		setTimeout(() => {
+			router.push('/')
+		}, 5000)
+	}, [])
 	return (
 		<Layout title='NotFound'>
 			<Flex minHeight='100vh' alignItems='center' justifyContent='center' flexDirection='row'>

@@ -12,8 +12,6 @@ const Finder: FC = () => {
 			<Input
 				placeholder='find country...'
 				htmlSize={20}
-				width='auto'
-				size='md'
 				borderColor='whiteAlpha.300'
 				_placeholder={{ color: 'gray.400', _dark: { color: 'gray.500', opacity: 0.6 } }}
 				onChange={handleChange}
