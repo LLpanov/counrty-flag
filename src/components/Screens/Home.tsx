@@ -12,26 +12,37 @@ import Selection from '@/components/Selection/Selection'
 
 const Home: FC<DataPaginateCountries> = ({ data, countries }) => {
 	const [currentPage, setCurrentPage] = useState(1)
+	const [filteredData, setFilteredData] = useState<ICountry[]>(countries)
 	const pageSize = 12
 
 	const handlePageChange = (selectedPage: number) => {
 		setCurrentPage(selectedPage)
 	}
 
-	const paginatedData = getPageOfCountries(countries, currentPage, pageSize)
-	const totalPages = getTotalPages(countries, pageSize)
+	const filterData = (searchTerm: string) => {
+		if (searchTerm) {
+			const filtered = countries.filter(country => country.name.common.toLowerCase().includes(searchTerm.toLowerCase()))
+			setFilteredData(filtered)
+			setCurrentPage(1)
+		} else {
+			setFilteredData(countries)
+		}
+	}
+
+	const filteredPaginatedData = getPageOfCountries(filteredData, currentPage, pageSize)
+	const totalPages = getTotalPages(filteredData, pageSize)
 
 	return (
 		<Layout title='Home' description='The general page all countries'>
 			<HStack padding={3} spacing={3} bg={'#8294ad'} boxShadow={'md'}>
-				<Finder />
+				<Finder onSearch={filterData} />
 				<Selection />
 			</HStack>
 			{data.length ? (
 				<>
 					{/*<Divider orientation='horizontal' my={1} />*/}
 					<SimpleGrid columns={[1, 2, 3, 4]} spacing={6} justifyItems={'center'} mt={'10'} mb={'5'} alignItems='center'>
-						{paginatedData.map((country: ICountry) => (
+						{filteredPaginatedData.map((country: ICountry) => (
 							<FlagsCard key={country.name.common} country={country} />
 						))}
 					</SimpleGrid>

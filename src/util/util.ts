@@ -11,3 +11,8 @@ export const getPageOfCountries = (countries: ICountry[], currentPage: number = 
 export const getTotalPages = (countries: ICountry[], pageSize: number): number => {
 	return Math.ceil(countries.length / pageSize)
 }
+
+export const filterByName = (countries: ICountry[], name: string): any => {
+	const filtred = countries.filter(country => country.name.common === name)
+	return filtred
+}

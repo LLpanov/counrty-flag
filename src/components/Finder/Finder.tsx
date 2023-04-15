@@ -1,12 +1,22 @@
 import React, { FC, useState } from 'react'
 import { Input } from '@chakra-ui/input'
 
-const Finder: FC = () => {
+interface FinderProps {
+	onSearch: (searchTerm: string) => void
+}
+
+const Finder: FC<FinderProps> = ({ onSearch }) => {
 	const [search, setSearch] = useState('')
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		e.preventDefault()
-		setSearch(e.target.value)
+		const inputValue = e.target.value.trim()
+		if (/^[a-zA-Z\s]*$/.test(inputValue)) {
+			setSearch(inputValue)
+			onSearch(inputValue)
+		} else {
+			alert('Please enter only English letters')
+		}
 	}
+
 	return (
 		<>
 			<Input
