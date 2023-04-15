@@ -21,7 +21,7 @@ const FlagsCard: FC<DataSingleCountry> = ({
 			<Link href={`country/${common}`}>
 				<Box
 					cursor={'pointer'}
-					width={220}
+					width={230}
 					height={320}
 					overflow='hidden'
 					borderRadius='md'
@@ -35,8 +35,8 @@ const FlagsCard: FC<DataSingleCountry> = ({
 					}}
 				>
 					<Box padding={1}>
-						<Box position='relative' width='100%' height='120px' borderRadius='md' overflow='hidden'>
-							<Image priority={true} src={flags.png} sizes='(max-width: 220px) 50vw, 33vw)' alt={flags.alt ?? 'flag' + ' picture'} fill />
+						<Box position='relative' width='100%' height='125px' borderRadius='md' overflow='hidden'>
+							<Image priority={true} src={flags.png} sizes='(max-width: 230px) 50vw, 33vw)' alt={flags.alt ?? 'flag' + ' picture'} fill />
 						</Box>
 					</Box>
 					<Stack padding={3} spacing={1}>

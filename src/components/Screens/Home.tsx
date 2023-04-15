@@ -8,7 +8,6 @@ import Loading from '@/components/Layout/Loading'
 import { getPageOfCountries, getTotalPages } from '@/util/util'
 import Pagination from '@/components/Pagination/Pagination'
 import Finder from '@/components/Finder/Finder'
-import Selection from '@/components/Selection/Selection'
 
 const Home: FC<DataPaginateCountries> = ({ data, countries }) => {
 	const [currentPage, setCurrentPage] = useState(1)
@@ -19,16 +18,27 @@ const Home: FC<DataPaginateCountries> = ({ data, countries }) => {
 		setCurrentPage(selectedPage)
 	}
 
-	const filterData = (searchTerm: string) => {
+	const filterData = (searchTerm: string, region: string, language: string, currency: string) => {
+		let filtered = countries
 		if (searchTerm) {
-			const filtered = countries.filter(country => country.name.common.toLowerCase().includes(searchTerm.toLowerCase()))
-			setFilteredData(filtered)
-			setCurrentPage(1)
-		} else {
-			setFilteredData(countries)
+			filtered = filtered.filter(country => country.name.common.toLowerCase().includes(searchTerm.toLowerCase()))
 		}
-	}
+		if (region) {
+			filtered = filtered.filter(country => country.region === region)
+		}
+		if (language) {
+			filtered = filtered.filter(country => country.languages && Object.values(country.languages).includes(language))
+		}
+		if (currency) {
+			filtered = filtered.filter(country => {
+				const currencies = country.currencies ? Object.values(country.currencies).map(currency => currency.name) : []
+				return currencies.includes(currency)
+			})
+		}
 
+		setFilteredData(filtered)
+		setCurrentPage(1)
+	}
 	const filteredPaginatedData = getPageOfCountries(filteredData, currentPage, pageSize)
 	const totalPages = getTotalPages(filteredData, pageSize)
 
@@ -36,7 +46,6 @@ const Home: FC<DataPaginateCountries> = ({ data, countries }) => {
 		<Layout title='Home' description='The general page all countries'>
 			<HStack padding={3} spacing={3} bg={'#8294ad'} boxShadow={'md'}>
 				<Finder onSearch={filterData} />
-				<Selection />
 			</HStack>
 			{data.length ? (
 				<>
