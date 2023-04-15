@@ -5,8 +5,7 @@ const nextConfig = {
 		API_URL: process.env.API_URL
 	},
 	images: {
-		domains: ['localhost', 'flagcdn.com', 'upload.wikimedia.org', 'mainfacts.com'],
-		unoptimized: true
+		domains: ['localhost', 'flagcdn.com', 'upload.wikimedia.org', 'mainfacts.com']
 	}
 }
 
