@@ -44,11 +44,11 @@ const FlagsCard: FC<DataSingleCountry> = ({
 							{common}
 						</Text>
 						<Text fontSize='xs' color='goldenrod'>
-							Capital: {capital}
+							Capital: {capital ? capital : 'unknown'}
 						</Text>
 						<Text fontSize='xs'>Region: {region}</Text>
 						<Text fontSize='xs' isTruncated>
-							Languages: {languages ? Object.values(languages).join(', ') : null}
+							Languages: {languages ? Object.values(languages).join(', ') : 'unknown'}
 						</Text>
 					</Stack>
 					<Flex wrap='wrap' width={'fit-content'} padding={2} gap={1} flexDirection={'row'}>

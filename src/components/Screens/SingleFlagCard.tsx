@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Box, Divider, Flex, List, ListItem, Table, Tbody, Td, Th, Thead, Text, Tr, useColorMode, Heading, Button } from '@chakra-ui/react'
+import { Box, Divider, Flex, List, ListItem, Table, Tbody, Td, Th, Thead, Tr, useColorMode, Heading, Button } from '@chakra-ui/react'
 import Layout from '@/components/Layout/Layout'
 import { DataSingleCountry } from '@/interfaces/country.interface'
 import Image from 'next/image'
@@ -59,7 +59,7 @@ const SingleFlagCard: FC<DataSingleCountry> = ({
 							</Tr>
 							<Tr>
 								<Td>Capital</Td>
-								<Td>{capital.join(', ')}</Td>
+								<Td>{capital ? capital.join(', ') : 'unknown'}</Td>
 							</Tr>
 							<Tr>
 								<Td>Region</Td>
@@ -67,18 +67,20 @@ const SingleFlagCard: FC<DataSingleCountry> = ({
 							</Tr>
 							<Tr>
 								<Td>Subregion</Td>
-								<Td>{subregion}</Td>
+								<Td>{subregion ? subregion : 'unknown'}</Td>
 							</Tr>
 							<Tr>
 								<Td>Languages</Td>
-								<Td>{Object.values(languages).join(', ')}</Td>
+								<Td>{languages ? Object.values(languages).join(', ') : 'unknown'}</Td>
 							</Tr>
 							<Tr>
 								<Td>Currencies</Td>
 								<Td>
-									{Object.values(currencies)
-										.map(currency => `${currency.name} (${currency.symbol ? currency.symbol : 'unknown'})`)
-										.join(', ')}
+									{currencies
+										? Object.values(currencies)
+												.map(currency => `${currency.name} (${currency.symbol ? currency.symbol : 'unknown'})`)
+												.join(', ')
+										: 'no official currency'}
 								</Td>
 							</Tr>
 							<Tr>

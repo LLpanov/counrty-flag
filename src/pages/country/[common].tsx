@@ -10,6 +10,7 @@ interface Params extends ParsedUrlQuery {
 }
 
 const CountryPage: NextPage<DataSingleCountry> = ({ country }) => {
+	console.log(country)
 	return <SingleFlagCard country={country} />
 }
 
@@ -18,12 +19,18 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 	const paths = countries.map(country => ({
 		params: { common: country.name.common }
 	}))
-	return { paths, fallback: true }
+	return { paths, fallback: false }
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-	const common = params?.common as string
+	if (!params?.common) {
+		return { notFound: true }
+	}
+	const common = params.common as string
 	const country = await countryService.getByName(common)
+	if (!country) {
+		return { notFound: true }
+	}
 	return {
 		props: { country }
 	}
