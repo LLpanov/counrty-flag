@@ -1,10 +1,11 @@
 import React, { FC } from 'react'
 import { Box, Divider, Flex, List, ListItem, Table, Tbody, Td, Th, Thead, Tr, useColorMode, Heading, Button } from '@chakra-ui/react'
-import Layout from '@/components/Layout/Layout'
-import { DataSingleCountry } from '@/interfaces/country.interface'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ViewIcon } from '@chakra-ui/icons'
+
+import Layout from '@/components/Layout/Layout'
+import { DataSingleCountry } from '@/interfaces/country.interface'
 
 const SingleFlagCard: FC<DataSingleCountry> = ({
 	country: { name, flags, landlocked, maps, startOfWeek, status, region, car, subregion, capital, languages, currencies, coatOfArms, independent, population, timezones }
@@ -14,8 +15,8 @@ const SingleFlagCard: FC<DataSingleCountry> = ({
 	return (
 		<Layout title={name.common} description={'Detail information about this country'}>
 			<Divider orientation='horizontal' my={3} />
-			<Flex justify='space-around' align='center' padding={2} marginTop={3} boxShadow={'md'} height={'vh'}>
-				<Box display={'flex'} padding={2} flexDirection={'column'} justifyContent={'space-between'} gap={5} boxShadow={'md'} borderRadius={'md'}>
+			<Flex justify='space-around' gap={8} align='center' direction={['column', 'row']} padding={2} marginTop={3} boxShadow={'md'} height={'vh'}>
+				<Box display={'flex'} padding={2} flexDirection={'column'} justifyContent={'space-between'} gap={[3, 5, 5, 5]} boxShadow={'md'} borderRadius={'md'}>
 					<Box height={'50%'}>
 						<Heading size={'xs'} mb={3}>
 							Country Flag
@@ -26,18 +27,23 @@ const SingleFlagCard: FC<DataSingleCountry> = ({
 					</Box>
 					{coatOfArms.png ? (
 						<Box height={'50%'}>
-							<Heading size={'xs'} mb={3}>
-								{' '}
-								Сoat of Arms{' '}
-							</Heading>
+							<Heading size={'xs'} mb={3}></Heading>
 							<Box>
 								<Image src={coatOfArms.png} priority alt={coatOfArms.alt ? coatOfArms.alt : 'flag'} width={260} height={160} style={{ borderRadius: '10px' }} />
 							</Box>
 						</Box>
 					) : null}
 				</Box>
-				<Box w='40%' p={4} rounded='md' boxShadow='md' bg={colorMode === 'dark' ? '#2c2c3b' : 'whiteAlpha.900'} opacity={colorMode === 'dark' ? 0.9 : 1} transition='background-color 0.3s ease-in-out'>
-					<Table variant='simple' size={'sm'}>
+				<Box
+					width={['80%', '40%']}
+					p={4}
+					rounded='md'
+					boxShadow='md'
+					bg={colorMode === 'dark' ? '#2c2c3b' : 'whiteAlpha.900'}
+					opacity={colorMode === 'dark' ? 0.9 : 1}
+					transition='background-color 0.3s ease-in-out'
+				>
+					<Table variant='simple' size={['sm']}>
 						<Thead>
 							<Tr>
 								<Th>Point</Th>

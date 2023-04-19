@@ -1,16 +1,15 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
+import { ParsedUrlQuery } from 'querystring'
 
 import SingleFlagCard from '@/components/Screens/SingleFlagCard'
 import { countryService } from '@/services/country.service'
 import { DataSingleCountry } from '@/interfaces/country.interface'
-import { ParsedUrlQuery } from 'querystring'
 
 interface Params extends ParsedUrlQuery {
 	common: string
 }
 
 const CountryPage: NextPage<DataSingleCountry> = ({ country }) => {
-	console.log(country)
 	return <SingleFlagCard country={country} />
 }
 

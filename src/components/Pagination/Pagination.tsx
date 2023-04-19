@@ -1,5 +1,5 @@
-import { Box, Button, ButtonGroup, Text } from '@chakra-ui/react'
 import React, { FC } from 'react'
+import { Box, Button, ButtonGroup, Text } from '@chakra-ui/react'
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
 
 interface IPaginationProps {

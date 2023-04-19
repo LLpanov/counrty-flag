@@ -1,9 +1,9 @@
 import { FC } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { Badge, Box, Flex, Stack, Text, useColorMode } from '@chakra-ui/react'
 
 import { DataSingleCountry } from '@/interfaces/country.interface'
-import Link from 'next/link'
 
 const FlagsCard: FC<DataSingleCountry> = ({
 	country: {
@@ -36,7 +36,7 @@ const FlagsCard: FC<DataSingleCountry> = ({
 				>
 					<Box padding={1}>
 						<Box position='relative' width='100%' height='125px' borderRadius='md' overflow='hidden'>
-							<Image priority={true} src={flags.png} sizes='(max-width: 230px) 50vw, 33vw)' alt={flags.alt ?? 'flag' + ' picture'} fill />
+							<Image priority={true} src={flags.png} sizes='(max-width: 230px) 50vw, 33vw)' alt={flags.alt ?? 'flag picture'} fill />
 						</Box>
 					</Box>
 					<Stack padding={3} spacing={1}>
