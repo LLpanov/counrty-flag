@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+	pageDataCollectionTimeout: 120000,
 	reactStrictMode: true,
 	env: {
 		API_URL: process.env.API_URL
